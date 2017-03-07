@@ -1,0 +1,10 @@
+{
+  "name": "SFQRCode",
+  "version": "1.0.0",
+  "api": 4,
+  "description": "PHPQRCode port to SimpleFramework.",
+  "author": "PeratX",
+  "main": "PeratX\\SFQRCode\\SFQRCode",
+  "order": 0,
+  "website": "https://github.com/PeratX/SFQRCode"
+}
