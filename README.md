@@ -1,7 +1,7 @@
 SFQRCode
 ===================
 
-__PHPQRCode port to [SimpleFramework](https://github.com/PeratX/SimpleFramework)__
+__[PHPQRCode](https://github.com/aferrandini/PHPQRCode) port to [SimpleFramework](https://github.com/PeratX/SimpleFramework)__
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -22,4 +22,4 @@ SFQRCode enables SimpleFramework modules access QRCode image or convert text int
 
 Get SFQRCode
 -------------
-__[Releases](https://github.com/PeratX/SimpleHtmlDom/releases)__
+__[Releases](https://github.com/PeratX/SFQRCode/releases)__
