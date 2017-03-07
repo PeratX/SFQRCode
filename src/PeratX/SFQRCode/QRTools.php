@@ -57,21 +57,4 @@ class QRTools{
 
 		return $barcode_array;
 	}
-
-
-	public static function buildCache(){
-		$mask = new QRMask();
-		for($a = 1; $a <= SFQRCode::QRSPEC_VERSION_MAX; $a++){
-			$frame = QRSpec::newFrame($a);
-			if(SFQRCode::QR_IMAGE){
-				$fileName = SFQRCode::getInstance()->getDataFolder() . 'frame_' . $a . '.png';
-				QRImage::png(self::binarize($frame), $fileName, 1, 0);
-			}
-
-			$width = count($frame);
-			$bitMask = array_fill(0, $width, array_fill(0, $width, 0));
-			for($maskNo = 0; $maskNo < 8; $maskNo++)
-				$mask->makeMaskNo($maskNo, $width, $frame, $bitMask, true);
-		}
-	}
 }

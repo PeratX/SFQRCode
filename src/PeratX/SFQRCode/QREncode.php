@@ -87,6 +87,7 @@ class QREncode{
 			$code->encodeString($intext, $this->version, $this->level, $this->hint, $this->caseSensitive);
 		}
 
+		var_dump($code->data);
 		return QRTools::binarize($code->data);
 	}
 
