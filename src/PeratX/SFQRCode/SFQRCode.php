@@ -62,6 +62,7 @@ class SFQRCode extends Module{
 
 	public function load(){
 		self::$obj = $this;
+		@mkdir($this->getDataFolder());
 	}
 
 	public static function getInstance(): SFQRCode{

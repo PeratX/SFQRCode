@@ -19,7 +19,7 @@ use PeratX\SimpleFramework\Console\Logger;
 class QREncode{
 
 	public $caseSensitive = true;
-	public $eightBit = false;
+	public $eightBit = true;
 
 	public $version = 0;
 	public $size = 3;
@@ -87,7 +87,6 @@ class QREncode{
 			$code->encodeString($intext, $this->version, $this->level, $this->hint, $this->caseSensitive);
 		}
 
-		var_dump($code->data);
 		return QRTools::binarize($code->data);
 	}
 

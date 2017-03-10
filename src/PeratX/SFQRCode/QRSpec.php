@@ -435,79 +435,6 @@ class QRSpec{
 		return $frame;
 	}
 
-
-	public static function debug($frame, $binary_mode = false){
-		if($binary_mode){
-
-			foreach($frame as &$frameLine){
-				$frameLine = join('<span class="m">&nbsp;&nbsp;</span>', explode('0', $frameLine));
-				$frameLine = join('&#9608;&#9608;', explode('1', $frameLine));
-			}
-
-			?>
-            <style>
-                .m {
-                    background-color: white;
-                }
-            </style>
-			<?php
-			echo '<pre><tt><br/ ><br/ ><br/ >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-			echo join("<br/ >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $frame);
-			echo '</tt></pre><br/ ><br/ ><br/ ><br/ ><br/ ><br/ >';
-
-		}else{
-
-			foreach($frame as &$frameLine){
-				$frameLine = join('<span class="m">&nbsp;</span>', explode("\xc0", $frameLine));
-				$frameLine = join('<span class="m">&#9618;</span>', explode("\xc1", $frameLine));
-				$frameLine = join('<span class="p">&nbsp;</span>', explode("\xa0", $frameLine));
-				$frameLine = join('<span class="p">&#9618;</span>', explode("\xa1", $frameLine));
-				$frameLine = join('<span class="s">&#9671;</span>', explode("\x84", $frameLine)); //format 0
-				$frameLine = join('<span class="s">&#9670;</span>', explode("\x85", $frameLine)); //format 1
-				$frameLine = join('<span class="x">&#9762;</span>', explode("\x81", $frameLine)); //special bit
-				$frameLine = join('<span class="c">&nbsp;</span>', explode("\x90", $frameLine)); //clock 0
-				$frameLine = join('<span class="c">&#9719;</span>', explode("\x91", $frameLine)); //clock 1
-				$frameLine = join('<span class="f">&nbsp;</span>', explode("\x88", $frameLine)); //version
-				$frameLine = join('<span class="f">&#9618;</span>', explode("\x89", $frameLine)); //version
-				$frameLine = join('&#9830;', explode("\x01", $frameLine));
-				$frameLine = join('&#8901;', explode("\0", $frameLine));
-			}
-
-			?>
-            <style>
-                .p {
-                    background-color: yellow;
-                }
-
-                .m {
-                    background-color: #00FF00;
-                }
-
-                .s {
-                    background-color: #FF0000;
-                }
-
-                .c {
-                    background-color: aqua;
-                }
-
-                .x {
-                    background-color: pink;
-                }
-
-                .f {
-                    background-color: gold;
-                }
-            </style>
-			<?php
-			echo "<pre><tt>";
-			echo join("<br/ >", $frame);
-			echo "</tt></pre>";
-
-		}
-	}
-
-
 	public static function serial($frame){
 		return gzcompress(join("\n", $frame), 9);
 	}
@@ -524,7 +451,7 @@ class QRSpec{
 
 		if(!isset(self::$frames[$version])){
 
-			$fileName = SFQRCode::QR_CACHE_DIR . 'frame_' . $version . '.dat';
+			$fileName = SFQRCode::getInstance()->getDataFolder() . 'frame_' . $version . '.dat';
 
 			if(SFQRCode::QR_CACHEABLE){
 				if(file_exists($fileName)){

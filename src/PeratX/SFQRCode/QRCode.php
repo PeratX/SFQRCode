@@ -35,9 +35,6 @@ class QRCode{
 		$frame = QRSpec::newFrame($version);
 
 		$filler = new FrameFiller($width, $frame);
-		if(is_null($filler)){
-			return NULL;
-		}
 
 		// inteleaved data and ecc codes
 		for($i = 0; $i < $raw->dataLength + $raw->eccLength; $i++){
@@ -76,10 +73,6 @@ class QRCode{
 			$masked = $maskObj->makeMask($width, $frame, $mask, $input->getErrorCorrectionLevel());
 		}
 
-		if($masked == NULL){
-			return NULL;
-		}
-
 		$this->version = $version;
 		$this->width = $width;
 		$this->data = $masked;
@@ -116,7 +109,6 @@ class QRCode{
 		}
 
 		$input = new QRInput($version, $level);
-		if($input == NULL) return NULL;
 
 		$ret = QRSplit::splitStringToQRInput($string, $input, $hint, $casesensitive);
 		if($ret < 0){
