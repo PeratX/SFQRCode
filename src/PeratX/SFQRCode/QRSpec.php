@@ -435,15 +435,13 @@ class QRSpec{
 		return $frame;
 	}
 
-	public static function serial($frame){
+	public static function serialize($frame){
 		return gzcompress(join("\n", $frame), 9);
 	}
 
-
-	public static function unserial($code){
+	public static function deserialize($code){
 		return explode("\n", gzuncompress($code));
 	}
-
 
 	public static function newFrame($version){
 		if($version < 1 || $version > SFQRCode::QRSPEC_VERSION_MAX)
@@ -453,12 +451,12 @@ class QRSpec{
 
 			$fileName = SFQRCode::getInstance()->getDataFolder() . 'frame_' . $version . '.dat';
 
-			if(SFQRCode::QR_CACHEABLE){
+			if(SFQRCode::isCacheable()){
 				if(file_exists($fileName)){
-					self::$frames[$version] = self::unserial(file_get_contents($fileName));
+					self::$frames[$version] = self::deserialize(file_get_contents($fileName));
 				}else{
 					self::$frames[$version] = self::createFrame($version);
-					file_put_contents($fileName, self::serial(self::$frames[$version]));
+					file_put_contents($fileName, self::serialize(self::$frames[$version]));
 				}
 			}else{
 				self::$frames[$version] = self::createFrame($version);
@@ -470,7 +468,6 @@ class QRSpec{
 
 		return self::$frames[$version];
 	}
-
 
 	public static function rsBlockNum($spec){
 		return $spec[0] + $spec[3];

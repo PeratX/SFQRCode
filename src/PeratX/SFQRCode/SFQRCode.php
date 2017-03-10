@@ -16,7 +16,6 @@ namespace PeratX\SFQRCode;
 use PeratX\SimpleFramework\Module\Module;
 
 class SFQRCode extends Module{
-	const QR_CACHEABLE = true;
 	const QR_FIND_BEST_MASK = true;
 	const QR_FIND_FROM_RANDOM = false;
 	const QR_DEFAULT_MASK = 2;
@@ -58,11 +57,21 @@ class SFQRCode extends Module{
 	const QRCAP_REMINDER = 2;
 	const QRCAP_EC = 3;
 
+	private static $cacheable = false;
+
 	private static $obj;
 
 	public function load(){
 		self::$obj = $this;
 		@mkdir($this->getDataFolder());
+	}
+
+	public static function isCacheable(): bool{
+		return self::$cacheable;
+	}
+
+	public static function setCacheable(bool $cacheable){
+		self::$cacheable = $cacheable;
 	}
 
 	public static function getInstance(): SFQRCode{

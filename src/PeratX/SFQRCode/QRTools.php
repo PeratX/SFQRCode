@@ -15,7 +15,6 @@ namespace PeratX\SFQRCode;
 
 class QRTools{
 
-
 	public static function binarize($frame){
 		$len = count($frame);
 		foreach($frame as &$frameLine){
@@ -27,7 +26,6 @@ class QRTools{
 
 		return $frame;
 	}
-
 
 	public static function tcPdfBarcodeArray($code, $mode = 'QR,L'){
 		$barcode_array = array();

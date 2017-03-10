@@ -19,7 +19,6 @@ class QRCode{
 	public $width;
 	public $data;
 
-
 	public function encodeMask(QRInput $input, $mask){
 		if($input->getVersion() < 0 || $input->getVersion() > SFQRCode::QRSPEC_VERSION_MAX){
 			throw new \Exception('wrong version');
@@ -92,7 +91,6 @@ class QRCode{
 		}
 
 		$input = new QRInput($version, $level);
-		if($input == NULL) return NULL;
 
 		$ret = $input->append(SFQRCode::QR_MODE_8, strlen($string), str_split($string));
 		if($ret < 0){

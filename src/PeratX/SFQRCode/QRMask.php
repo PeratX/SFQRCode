@@ -18,11 +18,9 @@ class QRMask{
 
 	public $runLength = array();
 
-
 	public function __construct(){
 		$this->runLength = array_fill(0, SFQRCode::QRSPEC_WIDTH_MAX + 1, 0);
 	}
-
 
 	public function writeFormatInformation($width, &$frame, $mask, $level){
 		$blacks = 0;
@@ -118,7 +116,6 @@ class QRMask{
 		return $bitMask;
 	}
 
-
 	public static function serial($bitFrame){
 		$codeArr = array();
 
@@ -127,7 +124,6 @@ class QRMask{
 
 		return gzcompress(join("\n", $codeArr), 9);
 	}
-
 
 	public static function unserial($code){
 		$codeArr = array();
@@ -139,13 +135,12 @@ class QRMask{
 		return $codeArr;
 	}
 
-
 	public function makeMaskNo($maskNo, $width, $s, &$d, $maskGenOnly = false){
 		$b = 0;
 
 		$fileName = SFQRCode::getInstance()->getDataFolder() . 'mask_' . $maskNo . DIRECTORY_SEPARATOR . 'mask_' . $width . '_' . $maskNo . '.dat';
 
-		if(SFQRCode::QR_CACHEABLE){
+		if(SFQRCode::isCacheable()){
 			if(file_exists($fileName)){
 				$bitMask = self::unserial(file_get_contents($fileName));
 			}else{
@@ -176,7 +171,6 @@ class QRMask{
 		return $b;
 	}
 
-
 	public function makeMask($width, $frame, $maskNo, $level){
 		$masked = array_fill(0, $width, str_repeat("\0", $width));
 		$this->makeMaskNo($maskNo, $width, $frame, $masked);
@@ -184,7 +178,6 @@ class QRMask{
 
 		return $masked;
 	}
-
 
 	public function calcN1N3($length){
 		$demerit = 0;
@@ -213,7 +206,6 @@ class QRMask{
 		}
 		return $demerit;
 	}
-
 
 	public function evaluateSymbol($width, $frame){
 		$demerit = 0;
@@ -280,7 +272,6 @@ class QRMask{
 		return $demerit;
 	}
 
-
 	public function mask($width, $frame, $level){
 		$minDemerit = PHP_INT_MAX;
 
@@ -316,6 +307,4 @@ class QRMask{
 
 		return $bestMask;
 	}
-
-
 }
