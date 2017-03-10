@@ -11,10 +11,9 @@
  * @author PeratX & arielferrandini
  */
 
-
 namespace PeratX\SFQRCode;
 
-use PeratX\SimpleFramework\Console\Logger;
+use iTXTech\SimpleFramework\Console\Logger;
 
 class QREncode{
 

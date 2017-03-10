@@ -13,7 +13,7 @@
 
 namespace PeratX\SFQRCode;
 
-use PeratX\SimpleFramework\Module\Module;
+use iTXTech\SimpleFramework\Module\Module;
 
 class SFQRCode extends Module{
 	const QR_FIND_BEST_MASK = true;

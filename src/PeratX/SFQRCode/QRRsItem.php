@@ -11,7 +11,6 @@
  * @author PeratX & arielferrandini
  */
 
-
 namespace PeratX\SFQRCode;
 
 class QRRsItem{
