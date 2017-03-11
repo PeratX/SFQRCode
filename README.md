@@ -1,7 +1,7 @@
 SFQRCode
 ===================
 
-__[PHPQRCode](https://github.com/aferrandini/PHPQRCode) port to [SimpleFramework](https://github.com/PeratX/SimpleFramework)__
+__[PHPQRCode](https://github.com/aferrandini/PHPQRCode) port to [SimpleFramework](https://github.com/iTXTech/SimpleFramework)__
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
